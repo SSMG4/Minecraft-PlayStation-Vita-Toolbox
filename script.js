@@ -18,6 +18,9 @@ function toggleBlackMode() {
     if (idioma.startsWith('es')) {
         // Configurar interfaz en español
         document.getElementById('etiqueta').innerText = '';
+    if (idioma.startsWith('fr')) {
+        // Configurar interfaz en francés
+        document.getElementById('etiqueta').innerText = '';
     } else if (idioma.startsWith('ja')) {
         // Configurar interfaz en japonés
         document.getElementById('etiqueta').innerText = '';
@@ -115,21 +118,29 @@ function changeLanguage() {
     var button4 = document.querySelectorAll('.container > button')[3];
 
     if (selected_language === "English") {
-        label3.innerText = "Name";
-        label1.innerText = "New ID";
-        label2.innerText = "Code";
+        label3.innerText = "Name (Vitacheat Label)";
+        label1.innerText = "Custom ID";
+        label2.innerText = "Generated Code";
         button1.innerText = "Generate Code";
         button2.innerText = "Copy";
         button3.innerText = "Save";
-        button4.innerText = "Clear All";
+        button4.innerText = "Erase";
     } else if (selected_language === "Español") {
-        label3.innerText = "Nombre";
-        label1.innerText = "Nuevo ID";
-        label2.innerText = "Código";
+        label3.innerText = "Nombre (Etiqueta de Vitacheat)";
+        label1.innerText = "Personalizada ID";
+        label2.innerText = "Código Generado";
         button1.innerText = "Generar Código";
         button2.innerText = "Copiar";
         button3.innerText = "Guardar";
-        button4.innerText = "Eliminar todo";
+        button4.innerText = "Borrar";
+    } else if (selected_language === "Français") {
+        label3.innerText = "Nom (sur Vitacheat)";
+        label1.innerText = "ID Personalisée";
+        label2.innerText = "Code Généré";
+        button1.innerText = "Générer le Code";
+        button2.innerText = "Copier";
+        button3.innerText = "Sauvegarder";
+        button4.innerText = "Effacer";
     } else if (selected_language === "日本語") {
         label3.innerText = "コード";
         label1.innerText = "名前";
