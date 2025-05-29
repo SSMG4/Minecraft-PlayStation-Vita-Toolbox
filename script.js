@@ -9,6 +9,8 @@ function toggleBlackMode() {
       button.textContent = "Black Mode";
     } else {
       button.textContent = "Grey Mode";
+    } else {
+      button.textContent = "White Mode";
     }
   }
 
@@ -18,7 +20,7 @@ function toggleBlackMode() {
     if (idioma.startsWith('es')) {
         // Configurar interfaz en español
         document.getElementById('etiqueta').innerText = '';
-    if (idioma.startsWith('fr')) {
+    } else if (idioma.startsWith('fr')) {
         // Configurar interfaz en francés
         document.getElementById('etiqueta').innerText = '';
     } else if (idioma.startsWith('ja')) {
