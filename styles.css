@@ -1,0 +1,270 @@
+body {
+    background-color: #282c34;
+    color: #abb2bf;
+    font-family: 'Cascadia Code', monospace;
+    transition: background-color 0.5s, color 0.5s;
+    margin: 0;
+    padding: 0;
+  }
+
+  body.black-mode {
+    background-color: #1e1e1e;
+    color: #abb2bf;
+  }
+
+  h1 {
+    font-size: 24px;
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  .styled-button {
+    background-color: #61afef;
+    color: #282c34;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    display: block;
+    margin: 20px auto;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+      
+  }
+
+  .styled-button:hover {
+    background-color: #5199d7;
+  }
+
+  .styled-button.black-mode {
+    background-color: #1e1e1e;
+    color: #abb2bf;
+  }
+
+  .styled-button.black-mode:hover {
+    background-color: #333;
+  }
+
+  .comic-sans {
+    font-family: 'Comic Sans MS', cursive;
+  }
+
+  .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    background-color: #1e1e1e;
+    text-align: center;
+    color: #abb2bf;
+    font-size: 14px;
+  }
+
+  .python-logo {
+    display: block;
+    margin: 0 auto;
+    width: 100px;
+  }
+
+  .python-text {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 20px;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+select, input[type="text"], textarea {
+    margin: 5px 0;
+    padding: 5px;
+    font-size: 12px;
+}
+
+textarea {
+    width: 776px;
+    height: 270px;
+}
+
+.container {
+  width: 800px;
+  margin: 0 auto;
+}
+
+.language-dropdown {
+  font-size: 12px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.label {
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.title {
+  font-size: 14px;
+}
+
+.input {
+  font-size: 12px;
+  width: 370px;
+}
+
+.output {
+  font-size: 12px;
+  width: 772px;
+  height: 200px;
+  resize: none; /* Quita la posiblidad de editar el tamaña de la caja de texto */
+  box-sizing: border-box; /* Incluye el tamaño del borde y el relleno en el ancho total */
+}
+
+.button {
+  font-size: 12px;
+  padding: 5px 10px;
+}
+
+.button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.button {
+  background-color: #61afef;
+  color: #282c34;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  margin: 10px;
+}
+
+.button:hover {
+  background-color: #5199d7;
+}
+
+.button.black-mode {
+  background-color: #1e1e1e;
+  color: #abb2bf;
+}
+
+.button.black-mode:hover {
+  background-color: #333;
+}
+
+.input {
+  border: 1px solid #26272a;
+  border-radius: 4px;
+  padding: 4px 8px;
+  color: #ffffff;
+  background-color: #26272a;
+}
+
+.output {
+  font-size: 12px;
+  width: 772px;
+  height: 200px;
+  resize: none;
+  box-sizing: border-box;
+  border: 1px solid #26272a;
+  border-radius: 4px;
+  padding: 4px 8px;
+  color: #ffffff;
+  background-color: #26272a;
+  pointer-events: none; /* Evita que el contenido sea seleccionable y editable */
+}
+
+.container {
+  position: relative;
+}
+
+#theme-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.language-dropdown {
+  position: absolute;
+  top: 10px;
+  left: -115px; /* Ajusta el valor negativo para mover hacia la izquierda */
+  border: 1px solid #333;
+  border-radius: 4px;
+  padding: 4px 8px;
+  color: white; /* Cambia el color a blanco */
+  background-color: #282c34;
+  text-align: left;
+}
+
+.savefile {
+  position: absolute;
+  bottom: 10px; /* Ajusta el valor para mover hacia abajo */
+  left: 10px; /* Ajusta el valor para mover hacia la izquierda */
+  border: 1px solid #333;
+  border-radius: 4px;
+  padding: 4px 8px;
+  color: white;
+  background-color: #282c34;
+  text-align: center;
+}
+/* Estilos para separar los botones "Selecciona" y "Crear" */
+#btnCrearTruco {
+  margin-top: 65px; /* Ajusta el valor según sea necesario para el espacio deseado */
+}
+/* Estilos para hacer más ancha la caja de texto */
+.output {
+  width: 99%; /* Puedes ajustar el valor según tus necesidades */
+  margin-top: 20px; /* Alinea la caja de texto con la posición de los botones */
+}
+
+/* Estilos para los botones "Minecraft PSN ID Changer" y "MC Replace Tool" */
+button {
+  background-color: #61afef;
+  color: #282c34;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  display: block;
+  margin: 20px auto;
+  width: 200px; /* Ajusta el ancho según tus necesidades */
+  text-align: center;
+}
+
+button:hover {
+  background-color: #5199d7;
+}
+
+/* Estilos específicos para el botón "Minecraft PSN ID Changer" */
+button:nth-child(2) {
+  background-color: #61afef;
+  color: #282c34;
+  width: 300px; /* Puedes ajustar el ancho según tus necesidades */
+}
+
+/* Estilos específicos para el botón "MC Replace Tool" */
+button:nth-child(3) {
+  background-color: #61afef;
+  color: #282c34;
+  width: 300px; /* Puedes ajustar el ancho según tus necesidades */
+}
+
+
+
+
+
+
+
