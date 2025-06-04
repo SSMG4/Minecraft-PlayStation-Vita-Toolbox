@@ -1,30 +1,21 @@
 function toggleThemeMode() {
-    const button = document.getElementById("theme-button");
     const body = document.body;
+    const button = document.getElementById("theme-button");
 
-    const themes = ["grey-mode", "black-mode", "amoled-mode", "white-mode"];
-    const themeLabels = {
-        "grey-mode": "Grey Mode",
-        "black-mode": "Black Mode",
-        "amoled-mode": "AMOLED Mode",
-        "white-mode": "White Mode"
-    };
-
-    // Find the current active theme
-    let currentIndex = themes.findIndex(theme => body.classList.contains(theme));
-
-    // Remove current theme
-    if (currentIndex !== -1) {
-        body.classList.remove(themes[currentIndex]);
+    if (!body.classList.contains("grey-mode") && !body.classList.contains("black-mode")) {
+        // Default state (White) → go to Grey
+        body.classList.add("grey-mode");
+        button.textContent = "Grey Mode";
+    } else if (body.classList.contains("grey-mode")) {
+        // Grey → Black
+        body.classList.remove("grey-mode");
+        body.classList.add("black-mode");
+        button.textContent = "Black Mode";
+    } else if (body.classList.contains("black-mode")) {
+        // Black → White
+        body.classList.remove("black-mode");
+        button.textContent = "White Mode";
     }
-
-    // Move to the next theme in the cycle
-    let nextIndex = (currentIndex + 1) % themes.length;
-    let nextTheme = themes[nextIndex];
-    
-    // Add new theme and update button text
-    body.classList.add(nextTheme);
-    button.textContent = themeLabels[nextTheme];
 }
 
 
