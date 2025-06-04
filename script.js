@@ -1,21 +1,27 @@
-function toggleBlackMode() {
+function toggleThemeMode() {
     const button = document.getElementById("theme-button");
     const body = document.body;
 
-    // Check current theme
-    if (body.classList.contains("white-mode")) {
-        body.classList.remove("white-mode");
-        body.classList.add("grey-mode");
-        button.textContent = "Grey Mode";
-    } else if (body.classList.contains("grey-mode")) {
+    if (body.classList.contains("grey-mode")) {
         body.classList.remove("grey-mode");
         body.classList.add("black-mode");
         button.textContent = "Black Mode";
-    } else {
-        // Default or black-mode
+    } else if (body.classList.contains("black-mode")) {
         body.classList.remove("black-mode");
+        body.classList.add("amoled-mode");
+        button.textContent = "AMOLED Mode";
+    } else if (body.classList.contains("amoled-mode")) {
+        body.classList.remove("amoled-mode");
         body.classList.add("white-mode");
         button.textContent = "White Mode";
+    } else if (body.classList.contains("white-mode")) {
+        body.classList.remove("white-mode");
+        body.classList.add("grey-mode");
+        button.textContent = "Grey Mode";
+    } else {
+        // No theme set yet? Default to grey-mode to start the cycle
+        body.classList.add("grey-mode");
+        button.textContent = "Grey Mode";
     }
 }
 
