@@ -7,19 +7,16 @@ body {
   padding: 0;
 }
 
-/* Dark but default-ish */
 body.black-mode {
   background-color: #1e1e1e;
   color: #abb2bf;
 }
 
-/* Bright, clean, easy on the eyes in the sun 🌞 */
 body.white-mode {
   background-color: #ffffff;
   color: #1e1e1e;
 }
 
-/* AMOLED power-saving ninja mode 🥷 */
 body.amoled-mode {
   background-color: #000000;
   color: #ffffff;
