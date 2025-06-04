@@ -1,18 +1,22 @@
-function toggleBlackMode() {
-    var button = document.getElementById("theme-button");
-    var body = document.body;
+function toggleThemeMode() {
+    const body = document.body;
+    const button = document.getElementById("theme-button");
 
-    // Cambiar el tema y el texto del botón
-    body.classList.toggle("black-mode");
-
-    if (body.classList.contains("black-mode")) {
-      button.textContent = "Black Mode";
-    } else {
-      button.textContent = "Grey Mode";
-    } else {
-      button.textContent = "White Mode";
+    if (!body.classList.contains("grey-mode") && !body.classList.contains("black-mode")) {
+        // Default state (White) → go to Grey
+        body.classList.add("grey-mode");
+        button.textContent = "Grey Mode";
+    } else if (body.classList.contains("grey-mode")) {
+        // Grey → Black
+        body.classList.remove("grey-mode");
+        body.classList.add("black-mode");
+        button.textContent = "Black Mode";
+    } else if (body.classList.contains("black-mode")) {
+        // Black → White
+        body.classList.remove("black-mode");
+        button.textContent = "White Mode";
     }
-  }
+}
 
   function adaptar_idioma() {
     var idioma = navigator.language || navigator.userLanguage;
