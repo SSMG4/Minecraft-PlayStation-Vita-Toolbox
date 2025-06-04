@@ -1,22 +1,24 @@
-function toggleThemeMode() {
-    const body = document.body;
+function toggleBlackMode() {
     const button = document.getElementById("theme-button");
+    const body = document.body;
 
-    if (!body.classList.contains("grey-mode") && !body.classList.contains("black-mode")) {
-        // Default state (White) → go to Grey
+    // Check current theme
+    if (body.classList.contains("white-mode")) {
+        body.classList.remove("white-mode");
         body.classList.add("grey-mode");
         button.textContent = "Grey Mode";
     } else if (body.classList.contains("grey-mode")) {
-        // Grey → Black
         body.classList.remove("grey-mode");
         body.classList.add("black-mode");
         button.textContent = "Black Mode";
-    } else if (body.classList.contains("black-mode")) {
-        // Black → White
+    } else {
+        // Default or black-mode
         body.classList.remove("black-mode");
+        body.classList.add("white-mode");
         button.textContent = "White Mode";
     }
 }
+
 
   function adaptar_idioma() {
     var idioma = navigator.language || navigator.userLanguage;
