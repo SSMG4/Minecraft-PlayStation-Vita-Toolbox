@@ -3,18 +3,18 @@ function toggleThemeMode() {
     const button = document.getElementById("theme-button");
 
     if (!body.classList.contains("grey-mode") && !body.classList.contains("black-mode")) {
-        // Default state (White) → go to Grey
+        // White → Grey
         body.classList.add("grey-mode");
-        button.textContent = "Grey Mode";
+        button.textContent = "Black Mode";
     } else if (body.classList.contains("grey-mode")) {
         // Grey → Black
         body.classList.remove("grey-mode");
         body.classList.add("black-mode");
-        button.textContent = "Black Mode";
+        button.textContent = "White Mode";
     } else if (body.classList.contains("black-mode")) {
         // Black → White
         body.classList.remove("black-mode");
-        button.textContent = "White Mode";
+        button.textContent = "Grey Mode";
     }
 }
 
@@ -192,3 +192,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   
+
