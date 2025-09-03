@@ -1,4 +1,8 @@
-# Minecraft-PlayStation-Vita-Toolbox
+<div align="center">
+<img src="https://github.com/SSMG4/Minecraft-PlayStation-Vita-Toolbox/icon.png" alt="MPSVT" width="100" height="100"/>
+</div>
+<h1 align="center"> Minecraft-PlayStation-Vita-Toolbox</h1>
+<div align="center">
 A toolbox for Minecraft PS Vita made by [r3versee](https://github.com/r3versee). This toolbox has been dead for a while now and it would be a bummer to leave it here!
 
 ## Main Features
