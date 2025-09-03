@@ -1,5 +1,5 @@
 <div align="center">
-<img src="https://github.com/SSMG4/Minecraft-PlayStation-Vita-Toolbox/blob/master/icon.png" alt="MPSVT" width="100" height="100"/>
+<img src="https://github.com/SSMG4/Minecraft-PlayStation-Vita-Toolbox/blob/master/icon.png" alt="MPSVT"/>
 </div>
 <h1 align="center"> Minecraft-PlayStation-Vita-Toolbox</h1>
 <div align="center">
