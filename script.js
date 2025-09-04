@@ -2,19 +2,19 @@ function toggleThemeMode() {
     const body = document.body;
     const button = document.getElementById("theme-button");
 
-    if (!body.classList.contains("grey-mode") && !body.classList.contains("black-mode")) {
-        // White → Grey
-        body.classList.add("grey-mode");
+    if (!body.classList.contains("white-mode") && !body.classList.contains("black-mode")) {
+        // Grey (default) → White
+        body.classList.add("white-mode");
         button.textContent = "Black Mode";
-    } else if (body.classList.contains("grey-mode")) {
-        // Grey → Black
-        body.classList.remove("grey-mode");
+    } else if (body.classList.contains("white-mode")) {
+        // White → Black
+        body.classList.remove("white-mode");
         body.classList.add("black-mode");
-        button.textContent = "White Mode";
-    } else if (body.classList.contains("black-mode")) {
-        // Black → White
-        body.classList.remove("black-mode");
         button.textContent = "Grey Mode";
+    } else if (body.classList.contains("black-mode")) {
+        // Black → Grey (default)
+        body.classList.remove("black-mode");
+        button.textContent = "White Mode";
     }
 }
 
@@ -192,4 +192,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   
+
 
