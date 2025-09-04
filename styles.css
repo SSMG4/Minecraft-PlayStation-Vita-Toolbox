@@ -1,7 +1,7 @@
 /* Default: GREY THEME */
 body {
-  background-color: #cccccc; /* light grey */
-  color: #222222;
+  background-color: #282c34; /* light grey */
+  color: #abb2bf;
   font-family: 'Cascadia Code', monospace;
   transition: background-color 0.5s, color 0.5s;
   margin: 0;
@@ -292,3 +292,4 @@ button:nth-child(3) {
   color: #282c34;
   width: 300px;
 }
+
