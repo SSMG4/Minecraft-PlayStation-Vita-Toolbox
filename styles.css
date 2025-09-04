@@ -74,7 +74,7 @@ h1 {
   padding: 10px;
   background-color: #282c34;
   text-align: center;
-  color: #222222;
+  color: #abb2bf;
   font-size: 14px;
 }
 body.white-mode .footer {
@@ -291,5 +291,6 @@ button:nth-child(3) {
   color: #282c34;
   width: 300px;
 }
+
 
 
