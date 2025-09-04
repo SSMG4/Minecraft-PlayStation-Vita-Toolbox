@@ -1,20 +1,20 @@
 body {
-  background-color: #282c34;
-  color: #abb2bf;
+  background-color: #ffffff;
+  color: #1e1e1e;
   font-family: 'Cascadia Code', monospace;
   transition: background-color 0.5s, color 0.5s;
   margin: 0;
   padding: 0;
 }
 
+body.grey-mode {
+  background-color: #cccccc;
+  color: #222222;
+}
+
 body.black-mode {
   background-color: #1e1e1e;
   color: #abb2bf;
-}
-
-body.white-mode {
-  background-color: #ffffff;
-  color: #1e1e1e;
 }
 
 body.amoled-mode {
@@ -271,6 +271,7 @@ button:nth-child(3) {
   color: #282c34;
   width: 300px; /* Puedes ajustar el ancho según tus necesidades */
 }
+
 
 
 
