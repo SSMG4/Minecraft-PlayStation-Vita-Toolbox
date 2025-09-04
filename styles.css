@@ -72,7 +72,7 @@ h1 {
   left: 0;
   width: 100%;
   padding: 10px;
-  background-color: #282c34;
+  background-color: #1e1e1e;
   text-align: center;
   color: #abb2bf;
   font-size: 14px;
@@ -291,6 +291,7 @@ button:nth-child(3) {
   color: #282c34;
   width: 300px;
 }
+
 
 
 
