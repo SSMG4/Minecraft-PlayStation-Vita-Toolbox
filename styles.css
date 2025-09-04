@@ -1,119 +1,142 @@
+/* Default: GREY THEME */
 body {
-  background-color: #ffffff;
-  color: #1e1e1e;
+  background-color: #cccccc; /* light grey */
+  color: #222222;
   font-family: 'Cascadia Code', monospace;
   transition: background-color 0.5s, color 0.5s;
   margin: 0;
   padding: 0;
 }
 
-body.grey-mode {
-  background-color: #cccccc;
-  color: #222222;
-}
-
+/* Black Theme */
 body.black-mode {
   background-color: #1e1e1e;
   color: #abb2bf;
 }
 
+/* White Theme */
+body.white-mode {
+  background-color: #ffffff;
+  color: #1e1e1e;
+}
+
+/* AMOLED Theme (if used) */
 body.amoled-mode {
   background-color: #000000;
   color: #ffffff;
 }
 
-  h1 {
-    font-size: 24px;
-    text-align: center;
-    margin-top: 50px;
-  }
+h1 {
+  font-size: 24px;
+  text-align: center;
+  margin-top: 50px;
+}
 
-  .styled-button {
-    background-color: #61afef;
-    color: #282c34;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
-    display: block;
-    margin: 20px auto;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-      
-  }
+.styled-button {
+  background-color: #61afef;
+  color: #282c34;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  display: block;
+  margin: 20px auto;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
 
-  .styled-button:hover {
-    background-color: #5199d7;
-  }
+.styled-button:hover {
+  background-color: #5199d7;
+}
 
-  .styled-button.black-mode {
-    background-color: #1e1e1e;
-    color: #abb2bf;
-  }
+.styled-button.black-mode {
+  background-color: #1e1e1e;
+  color: #abb2bf;
+}
 
-  .styled-button.black-mode:hover {
-    background-color: #333;
-  }
+.styled-button.black-mode:hover {
+  background-color: #333;
+}
 
-  .comic-sans {
-    font-family: 'Comic Sans MS', cursive;
-  }
+.comic-sans {
+  font-family: 'Comic Sans MS', cursive;
+}
 
-  .footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 10px;
-    background-color: #1e1e1e;
-    text-align: center;
-    color: #abb2bf;
-    font-size: 14px;
-  }
+/* Footer: matches theme */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  background-color: #cccccc;
+  text-align: center;
+  color: #222222;
+  font-size: 14px;
+}
+body.white-mode .footer {
+  background-color: #ffffff;
+  color: #1e1e1e;
+}
+body.black-mode .footer,
+body.amoled-mode .footer {
+  background-color: #1e1e1e;
+  color: #abb2bf;
+}
 
-  .python-logo {
-    display: block;
-    margin: 0 auto;
-    width: 100px;
-  }
+.python-logo {
+  display: block;
+  margin: 0 auto;
+  width: 100px;
+}
 
-  .python-text {
-    text-align: center;
-    font-size: 20px;
-    margin-top: 20px;
-  }
+.python-text {
+  text-align: center;
+  font-size: 20px;
+  margin-top: 20px;
+}
 
-  body {
-    font-family: Arial, sans-serif;
+body {
+  font-family: Arial, sans-serif;
 }
 
 h1 {
-    text-align: center;
+  text-align: center;
 }
 
 select, input[type="text"], textarea {
-    margin: 5px 0;
-    padding: 5px;
-    font-size: 12px;
+  margin: 5px 0;
+  padding: 5px;
+  font-size: 12px;
 }
 
 textarea {
-    width: 776px;
-    height: 270px;
+  width: 776px;
+  height: 270px;
 }
 
 .container {
   width: 800px;
   margin: 0 auto;
+  position: relative;
 }
 
 .language-dropdown {
   font-size: 12px;
   margin-top: 10px;
   margin-left: 10px;
+  position: absolute;
+  top: 10px;
+  left: -115px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  padding: 4px 8px;
+  color: white;
+  background-color: #282c34;
+  text-align: left;
 }
 
 .label {
@@ -128,19 +151,48 @@ textarea {
 .input {
   font-size: 12px;
   width: 370px;
+  border: 1px solid #26272a;
+  border-radius: 4px;
+  padding: 4px 8px;
+  color: #222222;
+  background-color: #e0e0e0;
+}
+
+body.black-mode .input,
+body.amoled-mode .input {
+  color: #ffffff;
+  background-color: #26272a;
+}
+
+body.white-mode .input {
+  color: #1e1e1e;
+  background-color: #f7f7f7;
 }
 
 .output {
   font-size: 12px;
-  width: 772px;
+  width: 99%;
   height: 200px;
-  resize: none; /* Quita la posiblidad de editar el tamaña de la caja de texto */
-  box-sizing: border-box; /* Incluye el tamaño del borde y el relleno en el ancho total */
+  resize: none;
+  box-sizing: border-box;
+  border: 1px solid #26272a;
+  border-radius: 4px;
+  padding: 4px 8px;
+  color: #222222;
+  background-color: #e0e0e0;
+  pointer-events: none;
+  margin-top: 20px;
 }
 
-.button {
-  font-size: 12px;
-  padding: 5px 10px;
+body.black-mode .output,
+body.amoled-mode .output {
+  color: #ffffff;
+  background-color: #26272a;
+}
+
+body.white-mode .output {
+  color: #1e1e1e;
+  background-color: #f7f7f7;
 }
 
 .button-container {
@@ -158,45 +210,30 @@ textarea {
   font-size: 16px;
   transition: background-color 0.3s;
   margin: 10px;
+  font-size: 12px;
 }
 
 .button:hover {
   background-color: #5199d7;
 }
 
-.button.black-mode {
+.button.black-mode,
+body.black-mode .button,
+body.amoled-mode .button {
   background-color: #1e1e1e;
   color: #abb2bf;
 }
 
-.button.black-mode:hover {
+.button.black-mode:hover,
+body.black-mode .button:hover,
+body.amoled-mode .button:hover {
   background-color: #333;
 }
 
-.input {
-  border: 1px solid #26272a;
-  border-radius: 4px;
-  padding: 4px 8px;
-  color: #ffffff;
-  background-color: #26272a;
-}
-
-.output {
-  font-size: 12px;
-  width: 772px;
-  height: 200px;
-  resize: none;
-  box-sizing: border-box;
-  border: 1px solid #26272a;
-  border-radius: 4px;
-  padding: 4px 8px;
-  color: #ffffff;
-  background-color: #26272a;
-  pointer-events: none; /* Evita que el contenido sea seleccionable y editable */
-}
-
-.container {
-  position: relative;
+.button.white-mode,
+body.white-mode .button {
+  background-color: #ffffff;
+  color: #1e1e1e;
 }
 
 #theme-button {
@@ -205,22 +242,10 @@ textarea {
   right: 10px;
 }
 
-.language-dropdown {
-  position: absolute;
-  top: 10px;
-  left: -115px; /* Ajusta el valor negativo para mover hacia la izquierda */
-  border: 1px solid #333;
-  border-radius: 4px;
-  padding: 4px 8px;
-  color: white; /* Cambia el color a blanco */
-  background-color: #282c34;
-  text-align: left;
-}
-
 .savefile {
   position: absolute;
-  bottom: 10px; /* Ajusta el valor para mover hacia abajo */
-  left: 10px; /* Ajusta el valor para mover hacia la izquierda */
+  bottom: 10px;
+  left: 10px;
   border: 1px solid #333;
   border-radius: 4px;
   padding: 4px 8px;
@@ -228,14 +253,10 @@ textarea {
   background-color: #282c34;
   text-align: center;
 }
+
 /* Estilos para separar los botones "Selecciona" y "Crear" */
 #btnCrearTruco {
-  margin-top: 65px; /* Ajusta el valor según sea necesario para el espacio deseado */
-}
-/* Estilos para hacer más ancha la caja de texto */
-.output {
-  width: 99%; /* Puedes ajustar el valor según tus necesidades */
-  margin-top: 20px; /* Alinea la caja de texto con la posición de los botones */
+  margin-top: 65px;
 }
 
 /* Estilos para los botones "Minecraft PSN ID Changer" y "MC Replace Tool" */
@@ -250,7 +271,7 @@ button {
   transition: background-color 0.3s;
   display: block;
   margin: 20px auto;
-  width: 200px; /* Ajusta el ancho según tus necesidades */
+  width: 200px;
   text-align: center;
 }
 
@@ -262,20 +283,12 @@ button:hover {
 button:nth-child(2) {
   background-color: #61afef;
   color: #282c34;
-  width: 300px; /* Puedes ajustar el ancho según tus necesidades */
+  width: 300px;
 }
 
 /* Estilos específicos para el botón "MC Replace Tool" */
 button:nth-child(3) {
   background-color: #61afef;
   color: #282c34;
-  width: 300px; /* Puedes ajustar el ancho según tus necesidades */
+  width: 300px;
 }
-
-
-
-
-
-
-
-
