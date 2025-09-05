@@ -2,7 +2,9 @@ function toggleThemeMode() {
     const body = document.body;
     const button = document.getElementById("theme-button");
 
-    if (!body.classList.contains("white-mode") && !body.classList.contains("black-mode")) {
+    if (!body.classList.contains("white-mode") &&
+        !body.classList.contains("black-mode") &&
+        !body.classList.contains("amoled-mode")) {
         // Grey (default) → White
         body.classList.add("white-mode");
         button.textContent = "White Mode";
@@ -11,13 +13,13 @@ function toggleThemeMode() {
         body.classList.remove("white-mode");
         body.classList.add("black-mode");
         button.textContent = "Black Mode";
-    } else if (body.classList.contains("white-mode")) {
-        // White → Black
+    } else if (body.classList.contains("black-mode")) {
+        // Black → AMOLED
         body.classList.remove("black-mode");
         body.classList.add("amoled-mode");
         button.textContent = "AMOLED Mode";
     } else if (body.classList.contains("amoled-mode")) {
-        // Black → Grey (default)
+        // AMOLED → Grey (default)
         body.classList.remove("amoled-mode");
         button.textContent = "Grey Mode";
     }
@@ -197,6 +199,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   
+
 
 
 
