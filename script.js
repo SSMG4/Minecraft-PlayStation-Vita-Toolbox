@@ -5,7 +5,7 @@ function toggleThemeMode() {
     if (!body.classList.contains("white-mode") && !body.classList.contains("black-mode")) {
         // Grey (default) → White
         body.classList.add("white-mode");
-        button.textContent = "Black Mode";
+        button.textContent = "White Mode";
     } else if (body.classList.contains("white-mode")) {
         // White → Black
         body.classList.remove("white-mode");
@@ -14,7 +14,7 @@ function toggleThemeMode() {
     } else if (body.classList.contains("black-mode")) {
         // Black → Grey (default)
         body.classList.remove("black-mode");
-        button.textContent = "White Mode";
+        button.textContent = "Black Mode";
     }
 }
 
@@ -192,5 +192,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   
+
 
 
