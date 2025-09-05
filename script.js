@@ -10,11 +10,11 @@ function toggleThemeMode() {
         // White → Black
         body.classList.remove("white-mode");
         body.classList.add("black-mode");
-        button.textContent = "Grey Mode";
+        button.textContent = "Black Mode";
     } else if (body.classList.contains("black-mode")) {
         // Black → Grey (default)
         body.classList.remove("black-mode");
-        button.textContent = "Black Mode";
+        button.textContent = "Grey Mode";
     }
 }
 
@@ -192,6 +192,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   
+
 
 
 
