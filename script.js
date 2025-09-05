@@ -1,6 +1,30 @@
+document.addEventListener("DOMContentLoaded", function () {
+    const body = document.body;
+    const button = document.getElementById("theme-button");
+    const savedTheme = localStorage.getItem("theme-mode");
+
+    // Remove any theme classes first
+    body.classList.remove("white-mode", "black-mode", "amoled-mode");
+
+    if (savedTheme === "white-mode") {
+        body.classList.add("white-mode");
+        button.textContent = "White Mode";
+    } else if (savedTheme === "black-mode") {
+        body.classList.add("black-mode");
+        button.textContent = "Black Mode";
+    } else if (savedTheme === "amoled-mode") {
+        body.classList.add("amoled-mode");
+        button.textContent = "AMOLED Mode";
+    } else {
+        button.textContent = "Grey Mode";
+    }
+});
+
+
 function toggleThemeMode() {
     const body = document.body;
     const button = document.getElementById("theme-button");
+    let theme;
 
     if (!body.classList.contains("white-mode") &&
         !body.classList.contains("black-mode") &&
@@ -8,21 +32,28 @@ function toggleThemeMode() {
         // Grey (default) → White
         body.classList.add("white-mode");
         button.textContent = "White Mode";
+        theme = "white-mode";
     } else if (body.classList.contains("white-mode")) {
         // White → Black
         body.classList.remove("white-mode");
         body.classList.add("black-mode");
         button.textContent = "Black Mode";
+        theme = "black-mode";
     } else if (body.classList.contains("black-mode")) {
         // Black → AMOLED
         body.classList.remove("black-mode");
         body.classList.add("amoled-mode");
         button.textContent = "AMOLED Mode";
+        theme = "amoled-mode";
     } else if (body.classList.contains("amoled-mode")) {
         // AMOLED → Grey (default)
         body.classList.remove("amoled-mode");
         button.textContent = "Grey Mode";
+        theme = "grey";
     }
+
+    // Save the theme
+    localStorage.setItem("theme-mode", theme);
 }
 
 
@@ -199,6 +230,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   
+
 
 
 
