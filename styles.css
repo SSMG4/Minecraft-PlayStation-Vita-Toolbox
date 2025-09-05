@@ -85,6 +85,10 @@ body.black-mode .footer {
   background-color: #1e1e1e;
   color: #abb2bf;
 }
+body.amoled-mode .footer {
+  background-color: #000000;
+  color: #ffffff;
+}
 
 .python-logo {
   display: block;
@@ -291,6 +295,7 @@ button:nth-child(3) {
   color: #282c34;
   width: 300px;
 }
+
 
 
 
