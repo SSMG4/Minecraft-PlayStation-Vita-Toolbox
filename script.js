@@ -13,7 +13,7 @@ function toggleThemeMode() {
         button.textContent = "Black Mode";
     } else if (body.classList.contains("white-mode")) {
         // White → Black
-        body.classList.remove("amoled-mode");
+        body.classList.remove("black-mode");
         body.classList.add("amoled-mode");
         button.textContent = "AMOLED Mode";
     } else if (body.classList.contains("amoled-mode")) {
@@ -197,6 +197,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   
+
 
 
 
