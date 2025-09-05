@@ -3,7 +3,7 @@
 </div>
 <h1 align="center"> Minecraft-PlayStation-Vita-Toolbox</h1>
 <div align="center">
-A toolbox for Minecraft PS Vita made by [r3versee](https://github.com/r3versee). This toolbox has been dead for a while now and it would be a bummer to leave it here!
+A toolbox for Minecraft PS Vita made by r3versee. This toolbox has been dead for a while now and it would be a bummer to leave it here!
 
 ## Main Features
 Both features use the [Vitacheat](https://github.com/r0ah/vitacheat) plugin by [r0ah](https://github.com/r0ah)
@@ -22,6 +22,9 @@ A button is available right under the Generated Code section to save and downloa
 ### Multiple themes available:
 AMOLED, Grey, Black, White
 
-I am gonna try and keep it updated and also try to add new features and better stuff but i cant guarentee anything.
+## Original Project
+If you wanna see the original project, click [here](https://github.com/r3versee/r3versee.github.io)! If you wanna see the developer, click [here](https://github.com/r3versee)!
+
+I am gonna try and keep it updated while also trying to add new features and better stuff but i cant guarentee anything.
 
 >&copy; 2025 r3verse & SSMG4. All Rights Reserved.
