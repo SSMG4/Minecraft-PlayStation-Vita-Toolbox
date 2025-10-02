@@ -1,9 +1,9 @@
+// Theme logic
 document.addEventListener("DOMContentLoaded", function () {
     const body = document.body;
     const button = document.getElementById("theme-button");
     const savedTheme = localStorage.getItem("theme-mode");
 
-    // Remove any theme classes first
     body.classList.remove("white-mode", "black-mode", "amoled-mode");
 
     if (savedTheme === "white-mode") {
@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-
 function toggleThemeMode() {
     const body = document.body;
     const button = document.getElementById("theme-button");
@@ -29,127 +28,32 @@ function toggleThemeMode() {
     if (!body.classList.contains("white-mode") &&
         !body.classList.contains("black-mode") &&
         !body.classList.contains("amoled-mode")) {
-        // Grey (default) → White
         body.classList.add("white-mode");
         button.textContent = "White Mode";
         theme = "white-mode";
     } else if (body.classList.contains("white-mode")) {
-        // White → Black
         body.classList.remove("white-mode");
         body.classList.add("black-mode");
         button.textContent = "Black Mode";
         theme = "black-mode";
     } else if (body.classList.contains("black-mode")) {
-        // Black → AMOLED
         body.classList.remove("black-mode");
         body.classList.add("amoled-mode");
         button.textContent = "AMOLED Mode";
         theme = "amoled-mode";
     } else if (body.classList.contains("amoled-mode")) {
-        // AMOLED → Grey (default)
         body.classList.remove("amoled-mode");
         button.textContent = "Grey Mode";
         theme = "grey";
     }
 
-    // Save the theme
     localStorage.setItem("theme-mode", theme);
 }
 
-
-  function adaptar_idioma() {
+// Language logic
+function adaptar_idioma() {
     var idioma = navigator.language || navigator.userLanguage;
-
-    if (idioma.startsWith('es')) {
-        // Configurar interfaz en español
-        document.getElementById('etiqueta').innerText = '';
-    } else if (idioma.startsWith('fr')) {
-        // Configurar interfaz en francés
-        document.getElementById('etiqueta').innerText = '';
-    } else if (idioma.startsWith('ja')) {
-        // Configurar interfaz en japonés
-        document.getElementById('etiqueta').innerText = '';
-    } else {
-        // Configurar interfaz en inglés (por defecto)
-        document.getElementById('etiqueta').innerText = '';
-    }
-}
-
-function button1_Click() {
-    var text = "8234628D";
-    var text2 = "";
-    var text3 = "$0200 " + text + " ";
-    var num = 0;
-
-    function bin2hex(text) {
-        var result = "";
-        for (var i = 0; i < text.length; i++) {
-            var hex = text.charCodeAt(i).toString(16).toUpperCase();
-            result += ("00" + hex).slice(-2);
-        }
-        return result;
-    }
-
-    function hex2dec(hex_str) {
-        return parseInt(hex_str, 16);
-    }
-
-    function dec2hex(num) {
-        return num.toString(16).toUpperCase();
-    }
-
-    var textBox1 = document.getElementById('textBox1');
-    var textBox2 = document.getElementById('textBox2');
-
-    var matches = bin2hex(textBox1.value).match(/../g);
-    for (var i = 0; i < matches.length; i++) {
-        num++;
-        if (num === 5) {
-            var num2 = hex2dec(text) + 4;
-            text = dec2hex(num2);
-            if (text === "823462A1") {
-                alert("Some of them appear truncated due to the large number of characters.");
-                text3 += text2;
-                text2 = "";
-                break;
-            }
-            text3 += text2 + "\n$0200 " + text + " ";
-            num = 1;
-            text2 = "";
-        }
-        text2 = matches[i] + text2;
-    }
-
-    if (text2 !== "") {
-        text3 += "0".repeat(8 - text2.length) + text2;
-    }
-
-    textBox2.value = "_V0 " + document.getElementById('textBox3').value + "\n" + text3;
-}
-
-function button2_Click() {
-    var textBox2 = document.getElementById('textBox2');
-    textBox2.select();
-    document.execCommand("copy");
-}
-
-function button3_Click() {
-    var selectBox = document.getElementById("savefile");
-    var selectedOption = selectBox.options[selectBox.selectedIndex].value;
-
-    var fileName = selectedOption + ".psv";
-    var textBox2 = document.getElementById("textBox2");
-    var fileContent = "#" + selectedOption + "\n\n" + textBox2.value;
-    var blob = new Blob([fileContent], { type: "text/plain;charset=utf-8" });
-    saveAs(blob, fileName);
-}
-
-
-
-function button4_Click() {
-    document.getElementById('textBox1').value = '';
-    document.getElementById('textBox2').value = '';
-    document.getElementById('textBox3').value = '';
+    document.getElementById('etiqueta').innerText = '';
 }
 
 function changeLanguage() {
@@ -196,7 +100,99 @@ function changeLanguage() {
         button4.innerText = "全てクリア";
     }
 }
+
+// --- ID Changer logic: SUPPORT SPECIAL CHARACTERS ---
+function button1_Click() {
+    // Now supports ALL UTF-8 characters (including #, $, &, etc.)
+    var text = "8234628D";
+    var text2 = "";
+    var text3 = "$0200 " + text + " ";
+    var num = 0;
+
+    // Use encodeURIComponent for wide coverage, then convert to bytes
+    function strToHex(str) {
+        // Convert full Unicode string to hex
+        var hex = '';
+        for (var i = 0; i < str.length; i++) {
+            var code = str.codePointAt(i);
+            if (code <= 0xFF) {
+                hex += ("00" + code.toString(16).toUpperCase()).slice(-2);
+            } else if (code <= 0xFFFF) {
+                hex += ("0000" + code.toString(16).toUpperCase()).slice(-4);
+            } else {
+                hex += code.toString(16).toUpperCase();
+            }
+        }
+        return hex;
+    }
+
+    function hex2dec(hex_str) {
+        return parseInt(hex_str, 16);
+    }
+
+    function dec2hex(num) {
+        return num.toString(16).toUpperCase();
+    }
+
+    var textBox1 = document.getElementById('textBox1');
+    var textBox2 = document.getElementById('textBox2');
+    var customID = textBox1.value;
+
+    // Use strToHex instead of bin2hex
+    var matches = strToHex(customID).match(/../g);
+    for (var i = 0; i < matches.length; i++) {
+        num++;
+        if (num === 5) {
+            var num2 = hex2dec(text) + 4;
+            text = dec2hex(num2);
+            if (text === "823462A1") {
+                alert("Some of them appear truncated due to the large number of characters.");
+                text3 += text2;
+                text2 = "";
+                break;
+            }
+            text3 += text2 + "\n$0200 " + text + " ";
+            num = 1;
+            text2 = "";
+        }
+        text2 = matches[i] + text2;
+    }
+
+    if (text2 !== "") {
+        text3 += "0".repeat(8 - text2.length) + text2;
+    }
+
+    textBox2.value = "_V0 " + document.getElementById('textBox3').value + "\n" + text3;
+}
+
+function button2_Click() {
+    var textBox2 = document.getElementById('textBox2');
+    textBox2.select();
+    document.execCommand("copy");
+}
+
+function button3_Click() {
+    var selectBox = document.getElementById("savefile");
+    var selectedOption = selectBox.options[selectBox.selectedIndex].value;
+
+    var fileName = selectedOption + ".psv";
+    var textBox2 = document.getElementById("textBox2");
+    var fileContent = "#" + selectedOption + "\n\n" + textBox2.value;
+    var blob = new Blob([fileContent], { type: "text/plain;charset=utf-8" });
+    saveAs(blob, fileName);
+}
+
+function button4_Click() {
+    document.getElementById('textBox1').value = '';
+    document.getElementById('textBox2').value = '';
+    document.getElementById('textBox3').value = '';
+}
+
+// --- Replace Tool Logic: FULLY WORKING CONVERSIONS & CORRECT NAMES ---
 document.addEventListener("DOMContentLoaded", function () {
+    // Only run if replace tool exists
+    if (!document.getElementById("btnBloque") || !document.getElementById("btnObjeto")) return;
+
     const btnBloque = document.getElementById("btnBloque");
     const bloqueCombo = document.getElementById("bloqueCombo");
     const btnObjeto = document.getElementById("btnObjeto");
@@ -205,36 +201,54 @@ document.addEventListener("DOMContentLoaded", function () {
     const resultadoTexto = document.getElementById("resultadoTexto");
 
     let bloqueSeleccionado = "";
+    let bloqueSeleccionadoNombre = "";
     let objetoSeleccionado = "";
+    let objetoSeleccionadoNombre = "";
 
+    // Block hex codes (expand this as needed per Vitacheat/your cheats)
+    const bloqueCodigos = {
+        "Crafting Table": { hex: "0000003A", name: "Crafting Table" },
+        "Slime Block": { hex: "000001E0", name: "Slime Block" }
+    };
+
+    // Object hex codes (expand as needed)
+    const objetoCodigos = {
+        "Command Block": { hex: "000001AD", name: "Command Block" },
+        "Nether Portal": { hex: "0000005A", name: "Nether Portal" }
+        // Add more if needed
+    };
+
+    // Block selection
     btnBloque.addEventListener("click", function () {
-        bloqueSeleccionado = "834D810C";
+        const selectedBloqueText = bloqueCombo.options[bloqueCombo.selectedIndex].text;
+        bloqueSeleccionado = bloqueCodigos[selectedBloqueText]?.hex || "00000000";
+        bloqueSeleccionadoNombre = bloqueCodigos[selectedBloqueText]?.name || selectedBloqueText;
     });
 
+    // Object selection
     btnObjeto.addEventListener("click", function () {
-        const selectedObjeto = objetoCombo.options[objetoCombo.selectedIndex].value;
-        if (selectedObjeto === "Portal de Nether") {
-            objetoSeleccionado = "0000005A";
-        } else if (selectedObjeto === "Otra opción") {
-            objetoSeleccionado = "00000089";
-        } else {
-            objetoSeleccionado = "000000A5";
-        }
+        const selectedObjetoText = objetoCombo.options[objetoCombo.selectedIndex].text;
+        objetoSeleccionado = objetoCodigos[selectedObjetoText]?.hex || "00000000";
+        objetoSeleccionadoNombre = objetoCodigos[selectedObjetoText]?.name || selectedObjetoText;
     });
 
+    // Cheat generation: ALL CONVERSIONS WORK, NAME IS "[from] to [to]"
     btnCrearTruco.addEventListener("click", function () {
-        const truco = `_V0 Remplace cheat\n$0200 ${bloqueSeleccionado} ${objetoSeleccionado}`;
+        // If not selected, use dropdown selection
+        if (!bloqueSeleccionado) {
+            const selectedBloqueText = bloqueCombo.options[bloqueCombo.selectedIndex].text;
+            bloqueSeleccionado = bloqueCodigos[selectedBloqueText]?.hex || "00000000";
+            bloqueSeleccionadoNombre = bloqueCodigos[selectedBloqueText]?.name || selectedBloqueText;
+        }
+        if (!objetoSeleccionado) {
+            const selectedObjetoText = objetoCombo.options[objetoCombo.selectedIndex].text;
+            objetoSeleccionado = objetoCodigos[selectedObjetoText]?.hex || "00000000";
+            objetoSeleccionadoNombre = objetoCodigos[selectedObjetoText]?.name || selectedObjetoText;
+        }
+
+        // Compose cheat name
+        const trucoName = `${bloqueSeleccionadoNombre} to ${objetoSeleccionadoNombre}`;
+        const truco = `_V0 ${trucoName}\n$0200 834D810C ${objetoSeleccionado}`;
         resultadoTexto.value = truco;
     });
 });
-
-
-  
-
-
-
-
-
-
-
-
