@@ -188,7 +188,7 @@ function button4_Click() {
     document.getElementById('textBox3').value = '';
 }
 
-// --- Replace Tool Logic: FULLY WORKING CONVERSIONS & CORRECT NAMES ---
+// --- Replace Tool Logic: WORKING MOD MENU STYLE CONVERSIONS ---
 document.addEventListener("DOMContentLoaded", function () {
     // Only run if replace tool exists
     if (!document.getElementById("btnBloque") || !document.getElementById("btnObjeto")) return;
@@ -200,55 +200,95 @@ document.addEventListener("DOMContentLoaded", function () {
     const btnCrearTruco = document.getElementById("btnCrearTruco");
     const resultadoTexto = document.getElementById("resultadoTexto");
 
-    let bloqueSeleccionado = "";
     let bloqueSeleccionadoNombre = "";
-    let objetoSeleccionado = "";
     let objetoSeleccionadoNombre = "";
+    let bloqueSeleccionado = "";
+    let objetoSeleccionado = "";
 
-    // Block hex codes (expand this as needed per Vitacheat/your cheats)
-    const bloqueCodigos = {
-        "Crafting Table": { hex: "0000003A", name: "Crafting Table" },
-        "Slime Block": { hex: "000001E0", name: "Slime Block" }
+    // List of obtainable items (expand as needed)
+    const obtainableItems = {
+        "Crafting Table": {
+            hex: "83568758",
+            name: "Crafting Table"
+        },
+        "Slime Block": {
+            hex: "835684E4",
+            name: "Slime Block"
+        }
+        // Add more obtainable items as needed
     };
 
-    // Object hex codes (expand as needed)
-    const objetoCodigos = {
-        "Command Block": { hex: "000001AD", name: "Command Block" },
-        "Nether Portal": { hex: "0000005A", name: "Nether Portal" }
-        // Add more if needed
+    // List of unobtainable items and their full cheats (expand as needed)
+    // Use the mod menu format here!
+    const unobtainableItems = {
+        "Command Block": {
+            name: "Command Block",
+            codes: [
+                "$5200 8399A634 83568758",
+                "$0200 8399A62C 00000040"
+                // Add more lines if needed for full conversion
+            ]
+        },
+        "Nether Portal": {
+            name: "Nether Portal",
+            codes: [
+                "$5200 8399C4A4 83568ACC",
+                "$0200 8399C49C 00000040"
+                // Example, expand for real menu
+            ]
+        }
+        // Add more unobtainable items (with full codes array) as needed
     };
 
     // Block selection
     btnBloque.addEventListener("click", function () {
         const selectedBloqueText = bloqueCombo.options[bloqueCombo.selectedIndex].text;
-        bloqueSeleccionado = bloqueCodigos[selectedBloqueText]?.hex || "00000000";
-        bloqueSeleccionadoNombre = bloqueCodigos[selectedBloqueText]?.name || selectedBloqueText;
+        bloqueSeleccionado = obtainableItems[selectedBloqueText]?.hex || "";
+        bloqueSeleccionadoNombre = obtainableItems[selectedBloqueText]?.name || selectedBloqueText;
     });
 
     // Object selection
     btnObjeto.addEventListener("click", function () {
         const selectedObjetoText = objetoCombo.options[objetoCombo.selectedIndex].text;
-        objetoSeleccionado = objetoCodigos[selectedObjetoText]?.hex || "00000000";
-        objetoSeleccionadoNombre = objetoCodigos[selectedObjetoText]?.name || selectedObjetoText;
+        objetoSeleccionadoNombre = unobtainableItems[selectedObjetoText]?.name || selectedObjetoText;
+        objetoSeleccionado = selectedObjetoText;
     });
 
-    // Cheat generation: ALL CONVERSIONS WORK, NAME IS "[from] to [to]"
+    // Cheat generation: name is "[from] to [to]", codes use unobtainable item mod menu section
     btnCrearTruco.addEventListener("click", function () {
         // If not selected, use dropdown selection
-        if (!bloqueSeleccionado) {
+        if (!bloqueSeleccionadoNombre) {
             const selectedBloqueText = bloqueCombo.options[bloqueCombo.selectedIndex].text;
-            bloqueSeleccionado = bloqueCodigos[selectedBloqueText]?.hex || "00000000";
-            bloqueSeleccionadoNombre = bloqueCodigos[selectedBloqueText]?.name || selectedBloqueText;
+            bloqueSeleccionado = obtainableItems[selectedBloqueText]?.hex || "";
+            bloqueSeleccionadoNombre = obtainableItems[selectedBloqueText]?.name || selectedBloqueText;
         }
-        if (!objetoSeleccionado) {
+        if (!objetoSeleccionadoNombre) {
             const selectedObjetoText = objetoCombo.options[objetoCombo.selectedIndex].text;
-            objetoSeleccionado = objetoCodigos[selectedObjetoText]?.hex || "00000000";
-            objetoSeleccionadoNombre = objetoCodigos[selectedObjetoText]?.name || selectedObjetoText;
+            objetoSeleccionadoNombre = unobtainableItems[selectedObjetoText]?.name || selectedObjetoText;
+            objetoSeleccionado = selectedObjetoText;
         }
 
-        // Compose cheat name
+        // Get unobtainable item codes
+        const unobtainable = unobtainableItems[objetoSeleccionado];
+        if (!unobtainable) {
+            resultadoTexto.value = "Unobtainable item codes not found.";
+            return;
+        }
+
         const trucoName = `${bloqueSeleccionadoNombre} to ${objetoSeleccionadoNombre}`;
-        const truco = `_V0 ${trucoName}\n$0200 834D810C ${objetoSeleccionado}`;
-        resultadoTexto.value = truco;
+        let codeBlock = `_V0 ${trucoName}\n`;
+
+        // Replace address with the obtained slot, if needed
+        // For each code line, replace the second hex (old slot) with the selected slot
+        // If your codes use the slot hex, replace it; otherwise, just output as is
+        codeBlock += unobtainable.codes.map(line => {
+            // Example: $5200 8399A634 83568758
+            // Replace 83568758 with bloqueSeleccionado if present
+            return line.replace(/(\$5200\s+[0-9A-F]+\s+)([0-9A-F]{8})/i, function (_, pre, slot) {
+                return pre + bloqueSeleccionado;
+            });
+        }).join("\n");
+
+        resultadoTexto.value = codeBlock;
     });
 });
