@@ -262,7 +262,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Cheat generation: name is "[from] to [to]", codes use unobtainable item mod menu section
     btnCrearTruco.addEventListener("click", function () {
-        // If not selected, use dropdown selection
         if (!bloqueSeleccionadoNombre) {
             const selectedBloqueText = bloqueCombo.options[bloqueCombo.selectedIndex].text;
             bloqueSeleccionado = obtainableItems[selectedBloqueText]?.hex || "";
@@ -273,29 +272,28 @@ document.addEventListener("DOMContentLoaded", function () {
             objetoSeleccionadoNombre = unobtainableItems[selectedObjetoText]?.name || selectedObjetoText;
             objetoSeleccionado = selectedObjetoText;
         }
-
-        // Get unobtainable item codes
+    
         const unobtainable = unobtainableItems[objetoSeleccionado];
         if (!unobtainable) {
             resultadoTexto.value = "Unobtainable item codes not found.";
             return;
         }
-
-        const trucoName = `${bloqueSeleccionadoNombre} to ${objetoSeleccionadoNombre}`;
+    
+        const trucoName = `${bloqueSeleccionadoNombre} → ${objetoSeleccionadoNombre}`;
         let codeBlock = `_V0 ${trucoName}\n`;
-
-        // Replace address with the obtained slot, if needed
-        // For each code line, replace the second hex (old slot) with the selected slot
-        // If your codes use the slot hex, replace it; otherwise, just output as is
+    
+        // Registry + inventory patch
         codeBlock += unobtainable.codes.map(line => {
-            // Example: $5200 8399A634 83568758
-            // Replace 83568758 with bloqueSeleccionado if present
-            return line.replace(/(\$5200\s+[0-9A-F]+\s+)([0-9A-F]{8})/i, function (_, pre, slot) {
+            return line.replace(/(\$5200\s+[0-9A-F]+\s+)([0-9A-F]{8})/i, (_, pre) => {
                 return pre + bloqueSeleccionado;
             });
         }).join("\n");
-
+    
+        // Add creative inventory patch (ensures menu shows correct block)
+        codeBlock += `\n$0200 ${bloqueSeleccionado} 00000040`;
+    
         resultadoTexto.value = codeBlock;
     });
 });
+
 
