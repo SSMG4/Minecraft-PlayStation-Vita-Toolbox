@@ -111,14 +111,20 @@ function button1_Click() {
 
     // Use encodeURIComponent for wide coverage, then convert to bytes
     function strToHex(str) {
-        // Convert full Unicode string to hex
-        var hex = '';
-        for (var i = 0; i < str.length; i++) {
-            var code = str.codePointAt(i);
+        let hex = '';
+        for (let i = 0; i < str.length; i++) {
+            let code = str.codePointAt(i);
+    
+            // Explicit fix for § symbol
+            if (str[i] === '§') {
+                hex += "A7";
+                continue;
+            }
+    
             if (code <= 0xFF) {
-                hex += ("00" + code.toString(16).toUpperCase()).slice(-2);
+                hex += code.toString(16).toUpperCase().padStart(2, '0');
             } else if (code <= 0xFFFF) {
-                hex += ("0000" + code.toString(16).toUpperCase()).slice(-4);
+                hex += code.toString(16).toUpperCase().padStart(4, '0');
             } else {
                 hex += code.toString(16).toUpperCase();
             }
@@ -292,3 +298,4 @@ document.addEventListener("DOMContentLoaded", function () {
         resultadoTexto.value = codeBlock;
     });
 });
+
